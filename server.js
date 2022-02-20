@@ -9,8 +9,8 @@ app.get("/",( req, res )=>
 
 //Define routes
 
-app.use('/api/users', require('/routes/users'));
-app.use('/api/auth', require('/routes/auth'));
+app.use('/api/users', require('./routes/users'));
+app.use('/api/auth', require('./routes/auth'));
 
 //register route
 /*app.get("/register",(req,res)=>{
