@@ -39,6 +39,9 @@ install depedencies
 	app.use('/api/auth', require('./routes/auth'));
 
 
+- create routes endpoints 
 
+
+- create config files with mongodbkey 
 
 
