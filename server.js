@@ -5,6 +5,10 @@ const app = express();
 
 connectDB();
 
+//init middleware 
+
+app.use(express.json({extended:false}));
+
 app.get("/",( req, res )=>
     res.json({msg:"Welcome to the the Auth API"})
 )

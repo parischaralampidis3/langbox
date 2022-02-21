@@ -44,4 +44,15 @@ install depedencies
 
 - create config files with mongodbkey 
 
+- connect mongodb 
+
+
+- Create a schema on mongodb
+
+ With Mongoose, you would define a Schema object in your application code 
+ that maps to a collection in your MongoDB database. 
+ The Schema object defines the structure of the documents in your collection. 
+ Then, you need to create a Model object out of the schema.
+  The model is used to interact with the collection.
+
 
