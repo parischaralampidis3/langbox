@@ -1,56 +1,78 @@
-const express = require( "express" );
+const express = require("express");
 const router = express.Router();
-
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const config = require("../config/default.json")
+const config = require("config")
 const { body, validationResult } = require('express-validator');
 
 
 //bring schema 
 
-const User = require( "../models/User" );
+const User = require("../models/User");
+//@route  GET api/users
+//@description GET logged in user
+//@access  Private
 
-
- //@route  GET api/users
- //@description GET logged in user
- //@access  Private
-
-router.get("/",( req,res ) =>{
-    try{
-       res.send( "get logged in user" ) 
-    }catch(err){
-        res.status(500).json( "Server error" )
+router.get("/", (req, res) => {
+    try {
+        res.send("get logged in user")
+    } catch (err) {
+        res.status(500).json("Server error")
     }
 });
 
- //@route  POST api/users
- //@description authenticate the user & get token
- //@access  Public
+//@route  POST api/users
+//@description authenticate the user & get token
+//@access  Public
 
+//valitate the user
 router.post("/", [
     body("email", 'Please include a valid email').isEmail(),
     body("password", "Password is required").exists()
 ],
-
-async ( req,res ) =>{
-    const errors = validationResult(req);
-    if(!errors.isEmpty()){
-        return res.status(400).json({errors: errors.array()});
-    }
-    //destructure user
-    const {email, password} = req.body;
-
-    try{
-        let user = await User.findOne({email})
-        if(!user){
-            return res.status(400).json({msg:"Invalid credentials"});
+    async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
         }
-        
-        res.send( "log in user" )
-    }catch(err){
-        res.status(500).json( "server error" )
+        //destructure user
+        const { email, password } = req.body;
+
+        try {
+            let user = await User.findOne({ email });
+            if (!user) {
+                return res.status(400).json({ msg: "Invalid credentials" });
+            }
+
+            // check if password is valid 
+
+            const isMatch = await bcrypt.compare(password, user.password);
+            if (!isMatch) {
+                return res.status(400).json({ msg: "Invalid credentials" });
+            }
+
+            const payload = {
+                user: {
+                    id: user.id
+                }
+            };
+
+            jwt.sign(
+                payload,
+                config.get('jwtSecret'),
+                {
+                    expiresIn: 360000
+                },
+                (err, token) => {
+                    if (err) throw err;
+                    res.json({ token });
+                }
+            );
+
+        } catch (err) {
+            res.status(500).send("server error")
+        }
     }
-})
+)
 
 module.exports = router;

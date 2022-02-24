@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
-const config = require("../config/default.json")
+const config = require("config")
 const { body, validationResult } = require('express-validator');
 
 
@@ -22,7 +22,6 @@ router.post( '/', [
 
 ],
 async (req, res) => {
- 
         const errors = validationResult(req);
         if(!errors.isEmpty()){
             return res.status(400).json({errors:errors.array()});
@@ -51,10 +50,8 @@ async (req, res) => {
 
     await user.save();
 
-    //json web token
 
-    res.send("user saved");
-
+   
     const payload = {
         user:{
            id: user.id 
