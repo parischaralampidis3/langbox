@@ -3,23 +3,22 @@ const Schema = mongoose.Schema;
 
 
 let PasswordResetSchema = new Schema({
-    userId:{
-        type: String,
+   userId: {
+		type: Schema.Types.ObjectId,
+		required: true,
+		ref: "user",
+		unique: true,
+	},
+	token: { 
+        type: String, 
         required: true
-    },
-    resetString:{
-        type: String,
-        required:true
-    },
-    date:{
-        type: Date,
-        default:Date.now
-    },
-    expiresAt:{
-        type:Date
-    },
+     },
+	createdAt: { 
+        type: Date, 
+        default: Date.now, 
+        expires: 3600 },
 });
 
-const Userverification = mongoose.model("PasswordReset",PasswordResetSchema);
+const UserVerification = mongoose.model("PasswordReset",PasswordResetSchema);
 
-module.exports =PasswordReset;
+module.exports =UserVerification;

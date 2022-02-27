@@ -17,6 +17,7 @@ app.get("/",( req, res )=>
 
 app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
+app.use("/api/password-reset", require ('./routes/passwordReset'));
 
 //register route
 /*app.get("/register",(req,res)=>{

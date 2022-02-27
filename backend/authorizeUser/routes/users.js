@@ -9,13 +9,16 @@ const { body, validationResult } = require('express-validator');
 //bring schema 
 
 const User = require( "../models/User" );
+const PasswordReset = require("../models/PasswordReset");
+
+
 
 //@route  POST api/users
 //@description Register a user
 //@access  Public
 
 //validate user
-router.post( '/', [
+router.post( '/reset-password', [
     body( "username", "Please add username" ).not().isEmpty(),
     body( "email", "Please include a valid email" ).isEmail(),
     body( "password", "Please enter a password with 6 or more character" ).isLength({min:6 })
@@ -29,7 +32,7 @@ async (req, res) => {
     //destructure user 
     const { username, email, password} = req.body;
     try{
-    let user =  await User.findOne({ email })
+    let user =  await User.findOne({ email });
         if(user){
             return res.status(400).json({msg:'User already exists'});
         }
@@ -78,6 +81,39 @@ async (req, res) => {
 }
 )
 
+//forgot password
+
+/*
+router.post('/',[
+    body( "email", "Please include a valid email" ).isEmail(),
+    body( "password", "Please enter a password with 6 or more character" ).isLength({min:6 })
+],
+    async (req,res) =>{
+        const errors = validationResult(req);
+        if(!errors.isEmpty()){
+            return res.status(400).json({errors:errors.array()});
+        }
+        //destructure email 
+        const {email} = req.body;
+        try{
+        let user = await User.findOne({email}); 
+        
+        if(!user){
+            return res.status(400).json({msg:'User not found, invalid request'});
+        }
+
+        let PasswordReset = await PasswordReset.findOne()
+
+
+
+        }catch(err){
+          console.log(err.message);
+          res.status(500).send('server error');           
+        }
+    }
+),
+
+*/
 
 module.exports = router;
  
