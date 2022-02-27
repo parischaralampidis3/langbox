@@ -20,6 +20,6 @@ let PasswordResetSchema = new Schema({
         },
 });
 
-const UserVerification = mongoose.model("PasswordReset", PasswordResetSchema);
+const UserVerification = mongoose.model("Token", PasswordResetSchema);
 
 module.exports = UserVerification;
