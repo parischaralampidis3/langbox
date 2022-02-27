@@ -1,4 +1,4 @@
-const c = require("config");
+const config = require("config");
 const express = require ("express");
 const connectDB = require( "./config/db" );
 const app = express();
@@ -17,7 +17,7 @@ app.get("/",( req, res )=>
 
 app.use('/api/users', require('./routes/users'));
 app.use('/api/auth', require('./routes/auth'));
-app.use("/api/password-reset", require ('./routes/passwordReset'));
+app.use('/api/password-reset', require ('./routes/passwordReset'));
 
 //register route
 /*app.get("/register",(req,res)=>{
