@@ -25,7 +25,7 @@ function MobileMenu() {
                     </button>
 
                     <button className="bg-blue-600 font-medium text-white rounded-md py-2 mx-auto w-1/3 px-2">
-                        <a href="./register">Login</a>
+                        <a href="./login">Login</a>
                     </button>
                 </div>
             </div>

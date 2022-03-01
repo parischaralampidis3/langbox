@@ -3,11 +3,11 @@ import React, {useState} from 'react';
 const Login = () => {
     const [user,setUser] = useState({
        
-        user_email: "",
+        email: "",
        
-        user_password: "" 
+        password: "" 
     });
-    const { user_email,user_password} = user;
+    const { email,password} = user;
     const onChange = (e) =>{ 
         setUser({
                 ...user, 
@@ -32,11 +32,11 @@ const Login = () => {
                 </div>
                 <div className='flex flex-col bg-gray-700  my-6 p-6  items-center w-full lg:w-full'>
                 
-                    <label htmlFor='user_email' className="text-white text-lg mt-6" >Email:</label>
-                    <input className="p-2 w-2/3" type="email" name="user_email" id="user_email" value={user_email} onChange={onChange} />
+                    <label htmlFor='email' className="text-white text-lg mt-6" >Email:</label>
+                    <input className="p-2 w-2/3" type="email" name="email" id="email" value={email} onChange={onChange} />
                    
-                    <label htmlFor='user_password' className='text-white text-lg mt-6'>Password:</label>
-                    <input className="p-2 w-2/3" type="password" name="user_password" id="user_password" value={user_password} onChange={onChange} />
+                    <label htmlFor='password' className='text-white text-lg mt-6'>Password:</label>
+                    <input className="p-2 w-2/3" type="password" name="password" id="user_password" value={password} onChange={onChange} />
                    
                 </div>
                 <div className='mt-6 flex justify-center'>
