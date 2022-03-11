@@ -15,7 +15,8 @@ const User = require( "../models/User" );
 //@access  Public
 
 //validate user
-router.post( '/reset-password', [
+router.post( '/', [
+
     body( "username", "Please add username" ).not().isEmpty(),
     body( "email", "Please include a valid email" ).isEmail(),
     body( "password", "Please enter a password with 6 or more character" ).isLength({min:6 })

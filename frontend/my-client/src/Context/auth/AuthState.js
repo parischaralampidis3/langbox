@@ -1,4 +1,4 @@
-import React, {useReducer} from "react";
+import React, { useReducer } from "react";
 import axios from "axios";
 import AuthContext from "./authContext";
 import authReducer from "./authReducer";
@@ -24,31 +24,31 @@ const AuthState = props => {
         loading: true,
         user: null,
         error: null
-   
+
     }
     const [state, dispatch] = useReducer(authReducer, initialState);
 
     //load user
-    const loadUser = () =>{
+    const loadUser = () => {
         console.log('loadUser');
     }
 
     //register user
-    const register = async formData =>{
+    const register = async formData => {
         const config = {
             headers: {
                 'Content-Type': 'application/json',
             }
         }
-        
-        try{
-            const res = await axios.post( "http://localhost:5000/auth/register",formData, config);
+
+        try {
+            const res = await axios.post("http://localhost:5000/auth", formData, config);
             dispatch({
                 type: REGISTER_SUCCESS,
-                payload:res.data
+                payload: res.data
             });
-       
-        }catch(err){
+
+        } catch (err) {
             dispatch({
                 type: REGISTER_FAIL,
                 payload: err.response.data.msg
@@ -60,22 +60,22 @@ const AuthState = props => {
 
 
     //login user
-        
-        const login = () =>{
-            console.log('login');
-        }
+
+    const login = () => {
+        console.log('login');
+    }
 
     //logout
 
-    
-    const logout= () =>{
+
+    const logout = () => {
         console.log('logout');
     }
 
     //clear errors
     //load user
-    const clearErrors = () =>{
-        
+    const clearErrors = () => {
+
     }
 
     return (
@@ -90,14 +90,14 @@ const AuthState = props => {
                 loadUser,
                 login,
                 logout,
-                clearErrors 
+                clearErrors
             }}
-            >
+        >
             {props.children}
         </AuthContext.Provider>
     );
 };
- 
+
 export default AuthState;
 
 

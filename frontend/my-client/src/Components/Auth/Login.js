@@ -2,25 +2,29 @@ import React, {useState} from 'react';
 
 const Login = () => {
     const [user,setUser] = useState({
-       
-        email: "",
-       
+        email: "", 
         password: "" 
     });
+
+    //destructure inputs
     const { email,password} = user;
+    
+    //this function listens on login input value and updates the state
     const onChange = (e) =>{ 
         setUser({
                 ...user, 
                 [e.target.name]: e.target.value
              });
     }
+    //this function listens on submit button
     const onSubmit = (e) =>{
         e.preventDefault();
         console.log('login is listening..')
     }
+
     return (
         <div >
-            <form onSubmit={onSubmit} action="">
+            <form onSubmit={onSubmit}>
         
                 <div className='flex flex-col justify-center  lg:text-xl'>
                   <div className='text-center text-gray-700 text-3xl font-bold'>

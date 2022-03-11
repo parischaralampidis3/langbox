@@ -1,5 +1,11 @@
 import { SET_ALERT, REMOVE_ALERT } from "../types";
 
+/*reducer - a pure function, accepting a state & action, and returning a new state. action 
+- an object literal, which describes a change to state. useContext -
+ a react hook, allowing functional components to take advantage of the context API. */
+
+
+
 const reducer = (state, action) => {
     switch (action.type) {
         case SET_ALERT:
@@ -14,4 +20,4 @@ const reducer = (state, action) => {
     }
 };
 
-export default reducer
+export default reducer;
