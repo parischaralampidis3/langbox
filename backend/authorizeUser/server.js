@@ -1,7 +1,9 @@
 const config = require("config");
 const express = require ("express");
 const connectDB = require( "./config/db" );
+const cors = require('cors');
 const app = express();
+
 
 connectDB();
 
@@ -12,6 +14,12 @@ app.use(express.json({extended:false}));
 app.get("/",( req, res )=>
     res.json({msg:"Welcome to the the Auth API"})
 )
+
+
+
+app.use(cors()) // Use this after the variable declaration
+
+
 
 //Define routes
 

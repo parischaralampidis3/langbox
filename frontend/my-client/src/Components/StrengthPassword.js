@@ -19,10 +19,12 @@ class StrengthPassword extends Component {
               
         }
     }
+    
+// #if password strength is more than 15 characters, meter should not be displayed
 
     render() {
-        const { user_password } = this.props;
-        const testedResult = zxcvbn(user_password);
+        const { password } = this.props;
+        const testedResult = zxcvbn(password);
    
         return (
             

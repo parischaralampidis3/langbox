@@ -15,8 +15,16 @@ import "./styles/tailwind.css";
 
 import AuthState from "./Context/auth/AuthState";
 import AlertState from "./Context/alert/AlertState";
+import setAuthToken from "./utils/setAuthToken";
 
-const App = () => {
+
+
+    if(localStorage.token){
+            setAuthToken(localStorage.token);
+        }
+
+
+  const App = () => {
   return ( 
     <AuthState>
       <AlertState>
