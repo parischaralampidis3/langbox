@@ -22,6 +22,7 @@ const Register = () => {
             navigate("/")
         }
 
+        
         if (error === 'User already exists') {
             setAlert(error, 'text-red-700');
             clearErrors();
