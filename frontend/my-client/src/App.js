@@ -1,6 +1,7 @@
-import React, { Fragment } from "react";
+import React, { Fragment,useState,useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-
+//import{auth} from './Components/Auth/firebase/firebase.utils';
+//import {useAuthState} from "react-firebase-hooks/auth";
 import Navigation from "./Layout/Navigation";
 
 import Register from "./Components/Auth/Register";
@@ -25,7 +26,13 @@ import setAuthToken from "./utils/setAuthToken";
 
 
   const App = () => {
+
+// const [user] = useAuthState(auth);
+
+
+
   return ( 
+  
     <AuthState>
       <AlertState>
         <Router>
@@ -40,8 +47,9 @@ import setAuthToken from "./utils/setAuthToken";
                   <Route exact path="/login" element={<Login/>} />
                   <Route exact path="/about" element={<About/>} />
                 </Routes>
-               
+             
               </div>
+              
             </div>
           </Fragment>
         </Router>

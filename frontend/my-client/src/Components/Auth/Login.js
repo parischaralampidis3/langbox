@@ -2,7 +2,7 @@ import React, { useContext, useState,useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AlertContext from '../../Context/alert/alertContext';
 import AuthContext from '../../Context/auth/authContext';
-
+import GoogleAuth from './SocialMediaAuth/GoogleAuth';
     const Login = () => {
 
         const alertContext = useContext(AlertContext);
@@ -80,8 +80,10 @@ import AuthContext from '../../Context/auth/authContext';
                 </div>
 
             </form>
-
+            <GoogleAuth/>
         </div>
+
     )
+       
 };
 export default Login;
