@@ -1,29 +1,30 @@
-import React, { useContext, useState,useEffect } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AlertContext from '../../Context/alert/alertContext';
 import AuthContext from '../../Context/auth/authContext';
 import GoogleAuth from './SocialMediaAuth/GoogleAuth';
-    const Login = () => {
 
-        const alertContext = useContext(AlertContext);
-        const authContext = useContext(AuthContext);
+import LoginImage from '../designComponents/LoginImage';
+const Login = () => {
 
-        const {setAlert} = alertContext;
+    const alertContext = useContext(AlertContext);
+    const authContext = useContext(AuthContext);
 
-        const {login, error, clearErrors, isAuthenticated} = authContext;
+    const { setAlert } = alertContext;
+    const { login, error, clearErrors, isAuthenticated } = authContext;
 
-        let navigate = useNavigate();
-        useEffect(() =>{
-            if(isAuthenticated){
-                navigate("/")
-            }
-            if( error === 'Invalid credentials'){
-                setAlert(error, 'text-red-700');
-                clearErrors();
-            }
-            //eslint-disable-next-line
-        },[error,isAuthenticated,navigate] );
-    
+    let navigate = useNavigate();
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate("/")
+        }
+        if (error === 'Invalid credentials') {
+            setAlert(error, 'text-red-700');
+            clearErrors();
+        }
+        //eslint-disable-next-line
+    }, [error, isAuthenticated, navigate]);
+
 
     const [user, setUser] = useState({
         email: "",
@@ -44,9 +45,9 @@ import GoogleAuth from './SocialMediaAuth/GoogleAuth';
     const onSubmit = (e) => {
         e.preventDefault();
 
-        if(email === "" || password === ""){
-            setAlert('Please fill out all the fields','text-red-700')
-        }else{
+        if (email === "" || password === "") {
+            setAlert('Please fill out all the fields', 'text-red-700')
+        } else {
             login({
                 email,
                 password
@@ -55,35 +56,48 @@ import GoogleAuth from './SocialMediaAuth/GoogleAuth';
     }
 
     return (
-        <div >
-            <form onSubmit={onSubmit}>
 
-                <div className='flex flex-col justify-center  lg:text-xl'>
-                    <div className='text-center text-gray-700 text-3xl font-bold'>
-                        <h1 >Login</h1>
-                    </div>
-                    <div className='text-gray-800 text-sm mt-6 '>
-                        <h3>Almost there!  Please fill out the information bellow!</h3>
-                    </div>
+        <div>
+            <div className='flex flex-col justify-center  '>
+                <div className='text-2xl text-center font-semibol  text-gray-700 text-3xl font-bold'>
+                    <h1 >Login</h1>
                 </div>
-                <div className='flex flex-col bg-gray-700  my-6 p-6  items-center w-full lg:w-full'>
+                <div className='text-gray-800 text-base mt-6 my-12 '>
+                    <h3>Almost there!  Please fill out the information bellow!</h3>
+                </div>
+            </div>
+        <div className='bg-gray-50 p-8'>
+            <div className='container mx-auto'>
+           
 
-                    <label htmlFor='email' className="text-white text-lg mt-6" >Email:</label>
-                    <input className="p-2 w-2/3" type="email" name="email" id="email" value={email} onChange={onChange} />
+                    <form onSubmit={onSubmit}>
+                        
+                        <div className="flex flex-col md:flex-row" >
+                            <LoginImage />
 
-                    <label htmlFor='password' className='text-white text-lg mt-6'>Password:</label>
-                    <input className="p-2 w-2/3" type="password" name="password" id="user_password" value={password} onChange={onChange} />
+                            <div className='flex flex-col bg-blue-300 py-6 p-6  font-bold items-center w-full lg:w-2/4'>
+
+                                <label htmlFor='email' className="text-white text-lg mt-6 my-4" >Email</label>
+                                <input className="p-2 w-2/3" type="email" name="email" id="email" value={email} onChange={onChange} />
+
+                                <label htmlFor='password' className='text-white text-lg mt-6 my-4'>Password</label>
+                                <input className="p-2 w-2/3" type="password" name="password" id="user_password" value={password} onChange={onChange} />
+
+                            </div>
+
+                        </div>
+                        <div className='mt-12 flex flex-col text-xl font-medium justify-center'>
+                            <input type="submit" className="w-2/3 inline-flex items-center justify-center px-4 my-6 py-2 bg-blue-300 border border-transparent rounded-md  capitalize text-white hover:bg-blue-700 active:bg-blue-700 focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-100 disabled:opacity-25 transition lg:w-full mx-auto " value="LOGIN" />
+                        </div>
+                    </form>
 
                 </div>
-                <div className='mt-6 flex justify-center'>
-                    <input type="submit" className="w-2/3  inline-flex items-center justify-center px-4 py-2 bg-blue-300 border border-transparent rounded-md font-semibold capitalize text-white hover:bg-blue-700 active:bg-blue-700 focus:outline-none focus:border-blue-500 focus:ring focus:ring-blue-200 disabled:opacity-25 transition lg:w-full" value="Login" />
-                </div>
-
-            </form>
-            <GoogleAuth/>
+            
+            <GoogleAuth />
+        </div>
         </div>
 
     )
-       
+
 };
 export default Login;
