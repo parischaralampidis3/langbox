@@ -36,7 +36,7 @@ const  Navigation = () => {
 
                     <div >
                         <button className="bg-blue-600 font-medium text-white rounded-md py-2 mx-12 px-6">
-                          <a href="./register">Login</a>
+                          <a href="./login">Login</a>
                         </button>
                     </div>
                     </div>

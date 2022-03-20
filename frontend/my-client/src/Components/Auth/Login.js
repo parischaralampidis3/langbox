@@ -16,7 +16,7 @@ const Login = () => {
     let navigate = useNavigate();
     useEffect(() => {
         if (isAuthenticated) {
-            navigate("/")
+            navigate("/dashboard")
         }
         if (error === 'Invalid credentials') {
             setAlert(error, 'text-red-700');

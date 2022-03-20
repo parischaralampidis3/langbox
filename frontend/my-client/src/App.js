@@ -4,12 +4,14 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 //import {useAuthState} from "react-firebase-hooks/auth";
 import Navigation from "./Layout/Navigation";
 
+import Home from "./Pages/Home"
+
 import Register from "./Components/Auth/Register";
 import Login from "./Components/Auth/Login"
 import Alerts from "./Layout/Alerts/Alerts";
 
 import About from "./Pages/About";
-import Home from "./Pages/Home";
+import Dashboard from "./Pages/Dashboard";
 
 import './App.css';
 import "./styles/tailwind.css";
@@ -42,7 +44,8 @@ import setAuthToken from "./utils/setAuthToken";
               <div className="flex justify-center my-6">
                 <Alerts />
                 <Routes>
-                  <Route exact path="/" element ={<Home/>}/>
+                  <Route exact path = "/" element = {<Home/>}/>
+                  <Route exact path="/dashboard" element ={<Dashboard/>}/>
                   <Route exact path="/register" element={<Register/>} />
                   <Route exact path="/login" element={<Login/>} />
                   <Route exact path="/about" element={<About/>} />
