@@ -1,12 +1,14 @@
-import React from 'react'
+import React from 'react';
+import Header from "../Components/designComponents/Header"
 
  const Home = () => {
+
 
 
     return (
 
     <div className="container mx-auto"> 
-        <h1>Home</h1>
+      <Header/>
  
       </div>
   )
