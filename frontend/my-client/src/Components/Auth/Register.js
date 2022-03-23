@@ -22,17 +22,17 @@ const Register = () => {
     let navigate = useNavigate();
     useEffect(() => {
 
-        if(isAuthenticated){
+        if (isAuthenticated) {
             navigate("/")
         }
 
-        
+
         if (error === 'User already exists') {
             setAlert(error, 'text-red-700');
             clearErrors();
         }
         //eslint-disable-next-line
-    }, [error,isAuthenticated,navigate]);
+    }, [error, isAuthenticated, navigate]);
 
     const [user, setUser] = useState({
         username: "",
@@ -76,35 +76,35 @@ const Register = () => {
         //  <h1>Create your account by filling out the information bellow!</h1>
         <div>
             <div className='flex flex-col justify-center  '>
-                <div className='text-2xl text-center font-semibol  text-gray-700 text-3xl font-bold'>
+                <div className='mt-6 text-2xl text-center font-semibol  text-gray-700 text-3xl font-bold'>
                     <h1 >Register</h1>
                 </div>
-                <div className='text-gray-800 text-base mt-6 my-12 '>
+                <div className='text-sm w-2/4 mx-auto md:text-lg w-4/5 text-gray-800 text-base mt-6 my-12 '>
                     <h3>Create your account by filling out the information bellow!</h3>
                 </div>
             </div>
-        <div className='bg-gray-50 p-4'>
-            <div className='container mx-auto'>
-           
+            <div className='bg-gray-50 p-4'>
+                <div className='container mx-auto'>
+
 
                     <form onSubmit={onSubmit}>
-                        
+
                         <div className="flex flex-col md:flex-row" >
                             <RegisterImage />
 
                             <div className='flex flex-col bg-blue-300 py-4 p-6  font-bold items-center w-full lg:w-3/4'>
                                 <label htmlFor='username' className=" text-white text-lg my-4">User Name</label>
                                 <div>
-                                <input className="p-2 w-2/3" type="text" name="username" id="username" value={username} onChange={onChange} />
+                                    <input className="p-2 w-2/3" type="text" name="username" id="username" value={username} onChange={onChange} />
                                 </div>
                                 <label htmlFor='email' className="text-white text-lg mt-6 my-4" >Email</label>
                                 <div>
-                                <input className="p-2 w-2/3" type="email" name="email" id="email" value={email} onChange={onChange} />
+                                    <input className="p-2 w-2/3" type="email" name="email" id="email" value={email} onChange={onChange} />
                                 </div>
                                 <label htmlFor='password' className='text-white text-lg mt-6 my-4'>Password</label>
-                               <div className='flex items-center justify-end'>
-                                <input className="p-2 w-2/3 relative" type="password" name="password" id="user_password" value={password} onChange={onChange} />
-                               <FontAwesomeIcon icon={faLock} className="absolute p-6 text-gray-400 " />
+                                <div className='flex items-center justify-end'>
+                                    <input className="p-2 w-2/3 relative" type="password" name="password" id="user_password" value={password} onChange={onChange} />
+                                    <FontAwesomeIcon icon={faLock} className="absolute p-6 text-gray-400 " />
                                 </div>
                                 <StrengthPassword password={password} />
                             </div>
@@ -116,9 +116,9 @@ const Register = () => {
                     </form>
 
                 </div>
-            
-        
-        </div>
+
+
+            </div>
         </div>
     )
 };

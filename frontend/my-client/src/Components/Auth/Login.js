@@ -5,6 +5,10 @@ import AuthContext from '../../Context/auth/authContext';
 import GoogleAuth from './SocialMediaAuth/GoogleAuth';
 
 import LoginImage from '../designComponents/LoginImage';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLock } from '@fortawesome/free-solid-svg-icons';
+
 const Login = () => {
 
     const alertContext = useContext(AlertContext);
@@ -58,30 +62,35 @@ const Login = () => {
     return (
 
         <div>
-            <div className='flex flex-col justify-center  '>
-                <div className='text-2xl text-center font-semibol  text-gray-700 text-3xl font-bold'>
+            <div className=' flex flex-col justify-center items-center  '>
+                <div className='mt-6 text-2xl text-center font-semibol  text-gray-700 text-3xl font-bold'>
                     <h1 >Login</h1>
                 </div>
-                <div className='text-gray-800 text-base mt-6 my-12 '>
+                <div className='text-sm w-2/4 mx-auto md:text-lg w-4/5 text-gray-800 text-base mt-6 my-12 '>
                     <h3>Almost there!  Please fill out the information bellow!</h3>
                 </div>
             </div>
-        <div className='bg-gray-50 p-8'>
-            <div className='container mx-auto'>
-           
+            <div className='bg-gray-50 p-8'>
+                <div className='container mx-auto'>
+
 
                     <form onSubmit={onSubmit}>
-                        
+
                         <div className="flex flex-col md:flex-row" >
                             <LoginImage />
 
                             <div className='flex flex-col bg-blue-300 py-6 p-6  font-bold items-center w-full lg:w-2/4'>
 
                                 <label htmlFor='email' className="text-white text-lg mt-6 my-4" >Email</label>
-                                <input className="p-2 w-2/3" type="email" name="email" id="email" value={email} onChange={onChange} />
-
+                                <div>
+                                    <input className="p-2 w-2/3" type="email" name="email" id="email" value={email} onChange={onChange} />
+                                </div>
                                 <label htmlFor='password' className='text-white text-lg mt-6 my-4'>Password</label>
-                                <input className="p-2 w-2/3" type="password" name="password" id="user_password" value={password} onChange={onChange} />
+
+                                <div className='flex items-center justify-end'>
+                                    <input className="p-2 w-2/3 relative" type="password" name="password" id="user_password" value={password} onChange={onChange} />
+                                    <FontAwesomeIcon icon={faLock} className="absolute p-6 text-gray-400 " />
+                                </div>
 
                             </div>
 
@@ -92,9 +101,9 @@ const Login = () => {
                     </form>
 
                 </div>
-            
-            <GoogleAuth />
-        </div>
+
+                <GoogleAuth />
+            </div>
         </div>
 
     )
