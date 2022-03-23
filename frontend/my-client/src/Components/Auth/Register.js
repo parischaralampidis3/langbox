@@ -4,6 +4,10 @@ import AlertContext from '../../Context/alert/alertContext';
 import AuthContext from '../../Context/auth/authContext';
 import StrengthPassword from "../StrengthPassword"
 
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLock } from '@fortawesome/free-solid-svg-icons';
+
 import RegisterImage from '../designComponents/RegisterImage';
 //fix alert message - display issue
 
@@ -89,15 +93,19 @@ const Register = () => {
                             <RegisterImage />
 
                             <div className='flex flex-col bg-blue-300 py-4 p-6  font-bold items-center w-full lg:w-3/4'>
-                                <label htmlFor='username' className=" text-white text-lg mt-6">User Name:</label>
+                                <label htmlFor='username' className=" text-white text-lg my-4">User Name</label>
+                                <div>
                                 <input className="p-2 w-2/3" type="text" name="username" id="username" value={username} onChange={onChange} />
-
+                                </div>
                                 <label htmlFor='email' className="text-white text-lg mt-6 my-4" >Email</label>
+                                <div>
                                 <input className="p-2 w-2/3" type="email" name="email" id="email" value={email} onChange={onChange} />
-
+                                </div>
                                 <label htmlFor='password' className='text-white text-lg mt-6 my-4'>Password</label>
-                                <input className="p-2 w-2/3" type="password" name="password" id="user_password" value={password} onChange={onChange} />
-
+                               <div className='flex items-center justify-end'>
+                                <input className="p-2 w-2/3 relative" type="password" name="password" id="user_password" value={password} onChange={onChange} />
+                               <FontAwesomeIcon icon={faLock} className="absolute p-6 text-gray-400 " />
+                                </div>
                                 <StrengthPassword password={password} />
                             </div>
 
