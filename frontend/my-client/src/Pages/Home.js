@@ -9,7 +9,7 @@ import Header from "../Components/designComponents/Header"
 
     <div className="container mx-auto"> 
       <Header/>
- 
+      <h1>hello world</h1>
       </div>
   )
 }
