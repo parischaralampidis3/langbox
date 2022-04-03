@@ -1,9 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import Hamburger from './Hamburger';
 import MobileMenu from './MobileMenu';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+
+import AuthContext from "../Context/auth/authContext"
 
 const  Navigation = () => {
+
+    const authContext = useContext(AuthContext);
+
+    const { isAuthenticated, logout, user } = authContext;
+
+
     const navigation = [
         { link: '#', text: 'Link 1' },
         { link: '#', text: 'Link 2' },
@@ -13,11 +23,34 @@ const  Navigation = () => {
     const [open, setOpen] = useState(false);
     const toggle = () => setOpen(!open)
 
+
+    const authLinks = (
+        <div>
+        <li>Hello,{user && user.username}</li>
+        <li>
+            <a href="#">
+                <FontAwesomeIcon icon={faArrowRightFromBracket} className="absolute p-6 text-gray-400 " />
+            </a>
+        </li>
+        </div>
+    )
+
+    const guestLinks = (
+        <div>
+            <li>Hello,{user && user.username}</li>
+        </div>
+    )
+
     return (
         <div className="bg-blue-200">
             <div className="container mx-auto">
                 <nav className='flex  justify-evenly py-6'>
                     <ul>
+
+
+                    {isAuthenticated?authLinks:guestLinks}
+
+
                         <li><a className="text-2xl font-bold text-gray-900" href="/">Home</a></li>
                     </ul>
                     <ul className='hidden md:flex block menu-links '>
