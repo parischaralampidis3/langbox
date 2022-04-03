@@ -13,7 +13,9 @@ const  Navigation = () => {
 
     const { isAuthenticated, logout, user } = authContext;
 
-
+    const onLogout = ()=>{
+        logout();
+    }
     const navigation = [
         { link: '#', text: 'Link 1' },
         { link: '#', text: 'Link 2' },
@@ -25,42 +27,21 @@ const  Navigation = () => {
 
 
     const authLinks = (
-        <div>
-        <li>Hello,{user && user.username}</li>
-        <li>
-            <a href="#">
-                <FontAwesomeIcon icon={faArrowRightFromBracket} className="absolute p-6 text-gray-400 " />
-            </a>
+        <div className="flex  list-none">
+        <li className='md:text-base lg:text-bold text-lg'>
+        Hello, {user && user.username}
         </li>
+            
+            <a onClick={onLogout} href="#" >
+                <FontAwesomeIcon icon={faArrowRightFromBracket} className="text-xl absolute -mt-4 p-6 text-gray-700 " />
+            </a>
+    
+        
         </div>
     )
 
     const guestLinks = (
-        <div>
-            <li>Hello,{user && user.username}</li>
-        </div>
-    )
-
-    return (
-        <div className="bg-blue-200">
-            <div className="container mx-auto">
-                <nav className='flex  justify-evenly py-6'>
-                    <ul>
-
-
-                    {isAuthenticated?authLinks:guestLinks}
-
-
-                        <li><a className="text-2xl font-bold text-gray-900" href="/">Home</a></li>
-                    </ul>
-                    <ul className='hidden md:flex block menu-links '>
-                        {navigation.map((nav) => (
-                            <li className='mx-8 font-medium text-gray-600  hover: text-gray-900 text-lg' key={nav.text}>
-                                <a href={nav.link} onClick={toggle}>{nav.text}</a>
-                            </li>
-                        ))}
-                    </ul>
-                <div className="hidden md:flex  block">  
+         <div className="hidden md:flex  block">  
                        <div>
                         <button className="bg-blue-600 font-medium text-white rounded-md py-2  px-6">
                           <a href="./register"> Register</a>
@@ -72,6 +53,27 @@ const  Navigation = () => {
                           <a href="./login">Login</a>
                         </button>
                     </div>
+                  
+                    </div>
+    )
+
+    return (
+        <div className="bg-blue-200">
+            <div className="container mx-auto">
+                <nav className='flex  justify-evenly py-6'>
+                    <ul>
+                        <li><a className="text-2xl font-bold text-gray-900" href="/">Home</a></li>
+                    </ul>
+                    <ul className='hidden md:flex block menu-links '>
+                        {navigation.map((nav) => (
+                            <li className='mx-8 font-medium text-gray-600  hover: text-gray-900 text-lg' key={nav.text}>
+                                <a href={nav.link} onClick={toggle}>{nav.text}</a>
+                            </li>
+                        ))}
+                    </ul>
+                <div className="hidden md:flex  block">  
+            
+                    {isAuthenticated?authLinks:guestLinks}
                     </div>
                
 
