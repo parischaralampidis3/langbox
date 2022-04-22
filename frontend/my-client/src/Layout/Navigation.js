@@ -16,11 +16,11 @@ const  Navigation = () => {
     const onLogout = ()=>{
         logout();
     }
+
+
     const navigation = [
         { link: '#', text: 'Link 1' },
-        { link: '#', text: 'Link 2' },
-        { link: '#', text: 'Link 3' },
-        { link: '/about', text: 'About' },
+
     ];
     const [open, setOpen] = useState(false);
     const toggle = () => setOpen(!open)
@@ -33,12 +33,15 @@ const  Navigation = () => {
         </li>
             
             <a onClick={onLogout} href="#" >
-                <FontAwesomeIcon icon={faArrowRightFromBracket} className="text-xl absolute -mt-4 p-6 text-gray-700 " />
+                <FontAwesomeIcon icon={faArrowRightFromBracket} className="text-xl absolute -mt-6 p-6 text-gray-700 " />
+           
+                <span className='mx-12'>Logout</span>
             </a>
     
         
         </div>
     )
+
 
     const guestLinks = (
          <div className="hidden md:flex  block">  
