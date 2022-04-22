@@ -3,7 +3,9 @@ import Hamburger from './Hamburger';
 import MobileMenu from './MobileMenu';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 import AuthContext from "../Context/auth/authContext"
 
@@ -19,7 +21,8 @@ const  Navigation = () => {
 
 
     const navigation = [
-        { link: '#', text: 'Link 1' },
+        { link: '/', text: 'Main Page' },
+   
 
     ];
     const [open, setOpen] = useState(false);
@@ -27,18 +30,53 @@ const  Navigation = () => {
 
 
     const authLinks = (
-        <div className="flex  list-none">
-        <li className='md:text-base lg:text-bold text-lg'>
+      
+        <div className="container mx-auto"> 
+
+        <div className="flex justify-center  list-none">
+
+
+        <div className=' flex items-center text-white px-12'>
+
+<li >
+    <a href="/dashboard">
+        <span>Profile</span>
+    </a>
+</li>
+
+</div>
+
+
+    
+
+
+           <div className=' flex items-center text-gray-700 px-12'>
+
+        <li >
+            <a href="/dashboard">
+
+                <FontAwesomeIcon icon={faUser} className="text-xl mr-2"/>
+                <span>Profile</span>
+            </a>
+        </li>
+        
+        </div>
+        
+        
+        
+    <div className='flex items-center relative '>
+        <li className='md:text-base lg: mx-8  border border-indigo-600 p-2  drop-shadow-md rounded-full bg-white font-bold text-bold text-lg '>
         Hello, {user && user.username}
         </li>
             
             <a onClick={onLogout} href="#" >
                 <FontAwesomeIcon icon={faArrowRightFromBracket} className="text-xl absolute -mt-6 p-6 text-gray-700 " />
            
-                <span className='mx-12'>Logout</span>
+           <span className='mx-12'>Logout</span>
             </a>
-    
+        </div>
         
+        </div>
         </div>
     )
 
@@ -63,13 +101,17 @@ const  Navigation = () => {
     return (
         <div className="bg-blue-200">
             <div className="container mx-auto">
-                <nav className='flex  justify-evenly py-6'>
+
+
+                <nav className='flex  justify-between py-4'>
+                    
                     <ul>
                         <li><a className="text-2xl font-bold text-gray-900" href="/">Home</a></li>
                     </ul>
-                    <ul className='hidden md:flex block menu-links '>
+
+                    <ul className='hidden md:flex block menu-links'>
                         {navigation.map((nav) => (
-                            <li className='mx-8 font-medium text-gray-600  hover: text-gray-900 text-lg' key={nav.text}>
+                            <li className='font-medium text-gray-700 ml-12  hover: text-gray-900 text-lg' key={nav.text}>
                                 <a href={nav.link} onClick={toggle}>{nav.text}</a>
                             </li>
                         ))}

@@ -1,9 +1,14 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
+import AuthContext from '../Context/auth/authContext';
 import Header from "../Components/designComponents/Header"
 
  const Home = () => {
 
-
+  const authContext = useContext(AuthContext)
+  useEffect(()=>{
+      authContext.loadUser();
+      //eslint-disable-next-line
+  },[])
 
     return (
 

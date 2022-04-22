@@ -1,6 +1,16 @@
-import React from 'react';
+import React,{useContext, useEffect} from 'react';
+import AuthContext from '../Context/auth/authContext';
+
 
 export const About = () => {
+  const authContext = useContext(AuthContext)
+  useEffect(()=>{
+      authContext.loadUser();
+      //eslint-disable-next-line
+  },[])
+
+
+
   return( 
   <div className='container mx-auto'>
       <div className='text-3xl font-bold text-left text-gray-700'>

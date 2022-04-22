@@ -61,6 +61,7 @@ const App = () => {
                     element={
                       <PrivateRoute>
                         <Dashboard />
+                      
                       </PrivateRoute>
                     }
                   />
@@ -68,6 +69,7 @@ const App = () => {
                   <Route exact path="/register" element={<Register />} />
                   <Route exact path="/login" element={<Login />} />
                   <Route exact path="/about" element={<About />} />
+                  <Route exact path ="/" element = {<Home/>}/>
                 </Routes>
 
 
