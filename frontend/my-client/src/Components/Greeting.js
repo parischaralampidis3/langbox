@@ -18,7 +18,7 @@ function Greeting() {
 
   return (
       <div className='container mx-auto'> 
-       <div className='text-xl font-bold'>
+       <div className='text-2xl font-semibold -mx-8 bg-gray-100 px-12  w-1/5 p-5'>
        <h1> Good {timeOfDay},</h1>
        </div>
        </div>

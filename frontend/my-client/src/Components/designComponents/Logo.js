@@ -13,10 +13,11 @@ const  Logo = ()=> {
     },[]);
 
     return (
-    <div>
+    <div className='flex py-8 justify-center'>
         
            
-                <Avatar className='mx-auto' color={Avatar.getRandomColor('sitebase', ['yellow', 'red', 'green'])} name={user && user.username}  size='70px' round={true}/>
+                <Avatar  color={Avatar.getRandomColor('sitebase', ['yellow', 'red', 'green'])} name={user && user.username}  size='90px' round={true}/>
+
 
                 
          
