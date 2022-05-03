@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import Hamburger from './Hamburger';
 import MobileMenu from './MobileMenu';
-
+import SearchUserBar from '../Components/designComponents/SearchUserBar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
@@ -32,9 +32,11 @@ const  Navigation = () => {
     const authLinks = (
       
         <div className="container mx-auto"> 
-
+     
+        
+ 
         <div className="flex justify-center  list-none">
-
+      
 
         <div className=' flex items-center text-white px-12'>
 
@@ -56,6 +58,8 @@ const  Navigation = () => {
             <a href="/dashboard">
 
                 <FontAwesomeIcon icon={faUser} className="text-xl mr-2"/>
+                
+               
                 <span>Profile</span>
             </a>
         </li>
@@ -68,7 +72,7 @@ const  Navigation = () => {
         <li className='md:text-base lg: mx-8  border border-indigo-600 p-2  drop-shadow-md rounded-full bg-white font-bold text-bold text-lg '>
         Hello, {user && user.username}
         </li>
-            
+    
             <a onClick={onLogout} href="#" >
                 <FontAwesomeIcon icon={faArrowRightFromBracket} className="text-xl absolute -mt-6 p-6 text-gray-700 " />
            
@@ -76,6 +80,12 @@ const  Navigation = () => {
             </a>
         </div>
         
+        </div>    
+        
+        
+        <div className='flex mx-auto  mt-8'> 
+       
+        <SearchUserBar/>
         </div>
         </div>
     )

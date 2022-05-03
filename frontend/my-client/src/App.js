@@ -10,7 +10,7 @@ import Dashboard from "./Pages/Dashboard";
 import Register from "./Components/Auth/Register";
 import Login from "./Components/Auth/Login"
 import Alerts from "./Layout/Alerts/Alerts";
-
+import SearchUserBar from "./Components/designComponents/SearchUserBar";
 import Loading from "./Layout/Loading";
 
 import About from "./Pages/About";
@@ -52,14 +52,17 @@ const App = () => {
         <Router>
           <Fragment>
             <Navigation />
+          
             <div>
               <div className="flex justify-center my-6">
                 <Alerts />
                 <Routes>
                              <Route
                     path="/dashboard"
-                    element={
+                    element={  
+                  
                       <PrivateRoute>
+                 
                         <Dashboard />
                       
                       </PrivateRoute>

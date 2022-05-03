@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import AuthContext from '../Context/auth/authContext';
 import Greeting from '../Components/Greeting';
 import Logo from "../Components/designComponents/Logo";
+
 const Home = () => {
 
     const authContext = useContext(AuthContext)
@@ -12,6 +13,7 @@ const Home = () => {
     return (
 
         <div className="container mx-auto">
+            
             <div>
                 <Greeting />
             </div>
