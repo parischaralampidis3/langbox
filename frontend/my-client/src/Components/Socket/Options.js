@@ -1,8 +1,11 @@
 import React from 'react'
 
-export const Options = () => {
+export const Options = ({children}) => {
   return (
-    <div>Options</div>
+    <div>
+        Options
+        {children}
+        </div>
   )
 }
 

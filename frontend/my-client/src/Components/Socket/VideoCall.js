@@ -11,8 +11,9 @@ export const VideoCall = () => {
 
 
         <VideoPlayer/>
-        <Options/>
+        <Options>
         <Notifications/>
+        </Options>
 
     </div>
   )
