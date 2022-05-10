@@ -1,22 +1,18 @@
 import React from 'react'
-import Options from './Options';
-import Notifications from './Notifications';
-import VideoPlayer from './VideoPlayer';
+import SocketVideo from '../videoSocket/SocketVideo'
 export const VideoCall = () => {
   return (
     <div>
-        <div className='text-center text-3xl font-bold items-center mt-12'>
-        <h1>VideoCall</h1>
+        
+        VideoCall 
+        
+        <SocketVideo/>
+        
         </div>
+   
+
+    )
 
 
-        <VideoPlayer/>
-        <Options>
-        <Notifications/>
-        </Options>
-
-    </div>
-  )
 }
-
-export default VideoCall;
+export default VideoCall

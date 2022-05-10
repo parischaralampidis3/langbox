@@ -1,41 +1,33 @@
+
 const express = require("express");
 const app = express();
-const server = require("http").createServer(app);
+const http = require("http");
+const { Server } = require("socket.io");
 const cors = require("cors");
-const { on } = require("events");
 
-const io = require("socket.io")(server,{
-    cors:{
-        origin: "*",
-        methods:[
-            "GET","POST"
-        ]
-    }
+app.use(cors());
+
+const server = http.createServer(app);
+
+const io = new Server(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    methods: ["GET", "POST"],
+  },
 });
 
-    app.use(cors());
+io.on("connection", (socket) => {
+  console.log(`User Connected: ${socket.id}`);
 
-    app.get("/",(req,res)=>{
-        res.send("Server is running");
-    })
+  socket.on("join_room", (data) => {
+    socket.join(data);
+  });
 
-    io.on("connection",(socket)=>{
-        socket.emit("me",socket.id);
+  socket.on("send_message", (data) => {
+    socket.to(data.room).emit("receive_message", data);
+  });
+});
 
-        socket.on("disconnect",()=>{
-            socket.broadcast.emit("call ended");
-        });
-
-        socket.on("call user", ({userToCall, signalData, from, name})=>{
-            io.to(userToCall).emit("call user",{signal: signalData, from,name});    
-        });
-
-        socket.on("answer call",(data)=>{
-            io.to(data).emit("call accepted", data.signal);
-        })
-    })
-
-
-const PORT = process.env.PORT||5001;
-
-server.listen(PORT,console.log(`videoSocket is listening on port ${PORT}`));
+server.listen(3001, () => {
+  console.log("SERVER IS RUNNING");
+});

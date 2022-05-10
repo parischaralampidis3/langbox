@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react'
 import AuthContext from '../Context/auth/authContext';
 import Greeting from '../Components/Greeting';
 import Logo from "../Components/designComponents/Logo";
-import VideoCall from '../Components/Socket/VideoCall';
+import ChatSocket from '../Components/Socket/ChatSocket';
 const Home = () => {
 
     const authContext = useContext(AuthContext)
@@ -21,7 +21,7 @@ const Home = () => {
                     <Greeting />
                 </div>
 
-                <div className='mt-6  bg-gray-100 drop-shadow-lg h-3/5 w-5/5'>
+                <div className='mt-6  bg-gray-100 drop-shadow-lg h-4/5 w-5/5'>
                     <Logo />
   
                 </div>
@@ -30,8 +30,8 @@ const Home = () => {
 
 
 
-            <div className=' mt-6 bg-gray-100 mx-auto items-center w-3/5 h-3/5 drop-shadow-lg'>
-              <VideoCall />
+            <div className=' mt-6 bg-gray-100 mx-auto items-center w-3/5 h-4/5 drop-shadow-lg'>
+              <ChatSocket />
             </div>
 
         </div>
