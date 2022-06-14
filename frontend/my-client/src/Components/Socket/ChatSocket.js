@@ -32,11 +32,11 @@ function ChatSocket() {
     <div className="container mx-auto">
 
       <div>
-        <h1 className="text-center items-center mt-8 pb-4 text-2xl text-gray-700 ">Lang chat</h1>
+        <h1 className="text-center items-center mt-12   text-2xl text-gray-700 ">Lang chat</h1>
       </div>
 
       
-      <div className="px-12 ">
+      <div className="">
 
       <div className="text-center pb-8 bg-blue-100  ">
 

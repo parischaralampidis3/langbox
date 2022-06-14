@@ -15,7 +15,7 @@ const Home = () => {
         <div className="container mx-auto">
 
             <div className='flex w-full h-screen'>
-            <div>
+            <div className='h-2/4'>
 
                 <div className='mt-6  bg-gray-100 drop-shadow-lg '>
                     <Greeting />
@@ -30,7 +30,7 @@ const Home = () => {
 
 
 
-            <div className=' mt-6 bg-gray-100 mx-auto items-center w-3/5 h-4/5 drop-shadow-lg'>
+            <div className=' mt-6 bg-gray-100 mx-auto items-center w-4/5 drop-shadow-lg'>
               <ChatSocket />
             </div>
 
